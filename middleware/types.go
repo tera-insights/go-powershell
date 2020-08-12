@@ -2,6 +2,7 @@
 
 package middleware
 
+// Middleware ...
 type Middleware interface {
 	Execute(cmd string) (string, string, error)
 	Exit()

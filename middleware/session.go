@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/gorillalabs/go-powershell/utils"
 	"github.com/juju/errors"
+	"github.com/tera-insights/go-powershell/utils"
 )
 
 type session struct {
@@ -15,6 +15,7 @@ type session struct {
 	name     string
 }
 
+// NewSession ...
 func NewSession(upstream Middleware, config *SessionConfig) (Middleware, error) {
 	asserted, ok := config.Credential.(credential)
 	if ok {

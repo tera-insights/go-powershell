@@ -8,13 +8,14 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/gorillalabs/go-powershell/backend"
-	"github.com/gorillalabs/go-powershell/utils"
 	"github.com/juju/errors"
+	"github.com/tera-insights/go-powershell/backend"
+	"github.com/tera-insights/go-powershell/utils"
 )
 
 const newline = "\r\n"
 
+// Shell ....
 type Shell interface {
 	Execute(cmd string) (string, string, error)
 	Exit()
@@ -27,6 +28,7 @@ type shell struct {
 	stderr io.Reader
 }
 
+// New ...
 func New(backend backend.Starter) (Shell, error) {
 	handle, stdin, stdout, stderr, err := backend.StartProcess("powershell.exe", "-NoExit", "-Command", "-")
 	if err != nil {

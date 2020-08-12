@@ -6,15 +6,18 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/gorillalabs/go-powershell/utils"
 	"github.com/juju/errors"
+	"github.com/tera-insights/go-powershell/utils"
 )
 
 const (
-	HTTPPort  = 5985
+	// HTTPPort ...
+	HTTPPort = 5985
+	// HTTPSPort ...
 	HTTPSPort = 5986
 )
 
+// SessionConfig ...
 type SessionConfig struct {
 	ComputerName          string
 	AllowRedirection      bool
@@ -25,10 +28,12 @@ type SessionConfig struct {
 	UseSSL                bool
 }
 
+// NewSessionConfig ...
 func NewSessionConfig() *SessionConfig {
 	return &SessionConfig{}
 }
 
+// ToArgs ...
 func (c *SessionConfig) ToArgs() []string {
 	args := make([]string, 0)
 
@@ -72,6 +77,7 @@ type credential interface {
 	prepare(Middleware) (interface{}, error)
 }
 
+// UserPasswordCredential ...
 type UserPasswordCredential struct {
 	Username string
 	Password string

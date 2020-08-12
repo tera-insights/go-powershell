@@ -6,7 +6,7 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/gorillalabs/go-powershell/utils"
+	"github.com/tera-insights/go-powershell/utils"
 )
 
 // utf8 implements a primitive middleware that encodes all outputs
@@ -18,6 +18,7 @@ type utf8 struct {
 	wrapper  string
 }
 
+// NewUTF8 ...
 func NewUTF8(upstream Middleware) (Middleware, error) {
 	wrapper := "goUTF8" + utils.CreateRandomString(8)
 
